@@ -4,6 +4,8 @@ import time
 import unittest
 from selenium.webdriver.common.by import By
 from django.test import LiveServerTestCase
+from selenium.common.exceptions import WebDriverException
+MAX_WAIT = 10  # 定义等待的最长时间
 class NewVisitorTest(LiveServerTestCase):
   def setUp(self):
     self.browser=webdriver.Chrome()
@@ -60,10 +62,10 @@ class NewVisitorTest(LiveServerTestCase):
 #张三想知道这个网站是否会记住他的清单
 #他看到网站为他生成了一个唯一的URL
     zhangsan_list_url=self.browser.current_url
-    self.assertRegex(zhangsan_list_url,'/list/.+')
+    self.assertRegex(zhangsan_list_url,'/lists/.+')
     #现在一个新用户王五访问网站#我们使用一个新浏览器会话
 #确保张三的信息不会从cookie中泄露出去
-    self_browser.quit()
+    self.browser.quit()
     self.browser =webdriver.Chrome()
 #王五访问首页
 #页面中看不到张三的清单
@@ -89,4 +91,3 @@ class NewVisitorTest(LiveServerTestCase):
 
   #  self.fail('Finish the test!')
 #他访问那个URL，发现它的待办事项列表还在
-
