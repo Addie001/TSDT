@@ -3,10 +3,10 @@ from selenium.webdriver.common.keys import Keys
 import time
 import unittest
 from selenium.webdriver.common.by import By
-from django.test import LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase 
 from selenium.common.exceptions import WebDriverException
 MAX_WAIT = 10  # 定义等待的最长时间
-class NewVisitorTest(LiveServerTestCase):
+class NewVisitorTest(StaticLiveServerTestCase):  
   def test_layout_and_styling(self):  
     # 张三访问首页  
     self.browser.get(self.live_server_url)  
