@@ -1,11 +1,11 @@
 [Unit]
-Description=Gunicorn server for 101.201.254.5
+Description=Gunicorn server for SITENAME
 
 [Service]
 Restart=on-failure
-User=yyy
-WorkingDirectory=/home/ff/sites/101.201.254.5/source
-ExecStart=/home/ff/sites/101.201.254.5/virtualenv/bin/gunicorn --bind unix:/tmp/101.201.254.5.socket notes.wsgi:application
+User=ff
+WorkingDirectory=/home/ff/sites/SITENAME/source
+ExecStart=/home/ff/sites/SITENAME/virtualenv/bin/gunicorn --bind unix:/tmp/101.201.254.5.socket notes.wsgi:application
 
 [Install]
 WantedBy=multi-user.target
