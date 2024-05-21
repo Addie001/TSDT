@@ -49,11 +49,11 @@ def _update_static_files(source_folder):
         f'cd {source_folder}'
         ' && ../virtualenv/bin/python manage.py collectstatic --noinput'
     )
-#更新数据库
+# 更新数据库
 def _update_database(source_folder):
     run(
-        f'cd {source_folder}'
-        ' && ../virtualenv/bin//python manage.py migrate --noinput'
+        f'cd {source_folder} '
+        '&& ../virtualenv/bin/python manage.py migrate --noinput'
     )
 if __name__=="__main__":
     local('fab -f /path/fabfile.py deploy')
